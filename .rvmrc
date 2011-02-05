@@ -1,0 +1,4 @@
+if [[ -s "gae.gems" ]] ; then
+  rvm gemset import tikkok.gems | grep -v already | grep -v listed | grep -v complete | sed '/^$/d'
+fi
+rvm  1.9.2@tikkok

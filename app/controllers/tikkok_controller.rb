@@ -17,7 +17,7 @@ class TikkokController < ApplicationController
         render :text => "fail to save"
       end
     rescue
-      render :text => "some error has occured"
+      render :text => "some error has occurred"
     end
   end
 

@@ -9,9 +9,14 @@ class TikkokController < ApplicationController
 
   def create
     message = Mail.new(params[:message])
-    message.body.each do |k,v|
-      puts "#{k} => #{v}"
+
+    puts message.body.class
+    if message.body.class == Array
+      message.body.each {|m|
+        puts m
+      }
     end
+
     begin
       tikkok = Tikkok.new(:title => message.subject,
                           :body => message.body.to_s)

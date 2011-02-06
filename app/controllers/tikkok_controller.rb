@@ -9,6 +9,7 @@ class TikkokController < ApplicationController
 
   def create
     message = Mail.new(params[:message])
+    puts message.body.methods
     begin
       tikkok = Tikkok.new(:title => message.subject,
                           :body => message.body.to_s)

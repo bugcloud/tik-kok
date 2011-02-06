@@ -4,13 +4,14 @@ class TikkokController < ApplicationController
 
   def index
     @tikkoks = Tikkok.findForDay
+    render :index
   end
 
   def create
     message = Mail.new(params[:message])
     begin
       Tikkok.create(:title => message.subject,
-                    :body => message.body.to_s)
+                    :body => message.body.decoded)
       if Tikkok.save
         render :text => "ok"
       else

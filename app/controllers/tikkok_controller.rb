@@ -9,10 +9,10 @@ class TikkokController < ApplicationController
 
   def create
     message = Mail.new(params[:message])
-    puts message.body.methods.to_s
+    puts message.body.methods.to_yaml_style
     begin
       Tikkok.create(:title => message.subject,
-                    :body => message.body.decoded)
+                    :body => message.body.to_s.encode('utf-8'))
       if Tikkok.save
         render :text => "ok"
       else

@@ -1,2 +1,6 @@
 %h1 Tikkok#index
 %p Find me in app/views/tikkok/index.html.haml
+
+= if @tikkoks.size > 0
+  = @tikkoks.each do |t|
+    %p #{t.title+t.body}

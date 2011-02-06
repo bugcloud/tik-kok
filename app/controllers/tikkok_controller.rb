@@ -12,7 +12,7 @@ class TikkokController < ApplicationController
 
     begin
       tikkok = Tikkok.new(:title => message.subject,
-                          :body => message.body.to_s.trim_mail_data)
+                          :body => trim_mail_data(message.body.to_s))
       if tikkok.save
         puts 'saved'
         render :text => "ok"
@@ -25,6 +25,13 @@ class TikkokController < ApplicationController
       puts e
       render :text => "some error has occurred"
     end
+  end
+
+  private
+  def trim_mail_data(str)
+    s = str.index(" ", str.index(/charset=.* /))
+    e = str.index(" --", str.index(/charset=.* /))
+    str[s..e]
   end
 
 end

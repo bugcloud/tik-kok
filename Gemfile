@@ -17,6 +17,7 @@ group :test do
   gem "rspec-integration", ">= 2.0.0.beta.13"
   gem "factory_girl", :git => 'https://github.com/thoughtbot/factory_girl.git'
   gem "cucumber", :git => 'https://github.com/aslakhellesoy/cucumber.git'
+  gem "cucumber-rails"
 end
 
 # Use unicorn as the web server

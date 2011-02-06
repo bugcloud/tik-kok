@@ -9,8 +9,8 @@ class TikkokController < ApplicationController
   def create
     message = Mail.new(params[:message])
     begin
-      Tikkok.create(:title => message.subject.toutf8,
-                    :body => message.body.to_s.toutf8)
+      Tikkok.create(:title => message.subject,
+                    :body => message.body.to_s)
       if Tikkok.save
         render :text => "ok"
       else

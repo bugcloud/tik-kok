@@ -19,8 +19,9 @@ class TikkokController < ApplicationController
         puts 'fail to save'
         render :text => "fail to save"
       end
-    rescue
+    rescue => e
       puts "some error has occurred"
+      puts e
       render :text => "some error has occurred"
     end
   end

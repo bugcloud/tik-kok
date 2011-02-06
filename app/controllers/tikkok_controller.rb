@@ -10,16 +10,9 @@ class TikkokController < ApplicationController
   def create
     message = Mail.new(params[:message])
 
-    puts message.body.class
-    if message.body.class == Array
-      message.body.each {|m|
-        puts m
-      }
-    end
-
     begin
       tikkok = Tikkok.new(:title => message.subject,
-                          :body => message.body.to_s)
+                          :body => message.body.to_s.trim_mail_data)
       if tikkok.save
         puts 'saved'
         render :text => "ok"

@@ -32,7 +32,9 @@ class TikkokController < ApplicationController
     puts "str: #{str}"
     s = str.index(" ", str.index(/charset=.* /))
     e = str.index("--", str.index(/Content\-Transfer\-Encoding.*\n/))
-    if e.nil? e = str.index("--", str.index(/charset=.* /))
+    if e.nil?
+      e = str.index("--", str.index(/charset=.* /))
+    end
     (s !=nil and e != nil)? str[s..e] : str
   end
 

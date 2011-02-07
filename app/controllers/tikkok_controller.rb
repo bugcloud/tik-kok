@@ -4,7 +4,6 @@ class TikkokController < ApplicationController
 
   def index
     @tikkoks = Tikkok.findForDay
-    render :index
   end
 
   def create
@@ -32,6 +31,9 @@ class TikkokController < ApplicationController
     puts "str: #{str}"
     s = str.index(" ", str.index(/charset=.* /))
     e = str.index("--", str.index(/charset=.* /))
+    if e.nil?
+      e = str.index("--", str.index("Content-Transfer-Encoding"))
+    end
     (s !=nil and e != nil)? str[s..e] : str
   end
 

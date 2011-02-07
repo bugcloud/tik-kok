@@ -30,9 +30,9 @@ class TikkokController < ApplicationController
   def trim_mail_data(str)
     puts "str: #{str}"
     s = str.index(" ", str.index(/charset=.* /))
-    e = str.index("--", str.index(/charset=.* /))
+    e = str.index("--", str.index("Content-Transfer-Encoding"))
     if e.nil?
-      e = str.index("--", str.index("Content-Transfer-Encoding"))
+      e = str.index("--", str.index(/charset=.* /))
     end
     (s !=nil and e != nil)? str[s..e] : str
   end

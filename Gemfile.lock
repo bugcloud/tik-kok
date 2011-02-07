@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/aslakhellesoy/cucumber.git
-  revision: e2df150cc4fdd4ca6e6a4db8da47fff4eea97df8
+  revision: e2df150
   specs:
     cucumber (0.10.0)
       builder (>= 2.1.2)
@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: https://github.com/thoughtbot/factory_girl.git
-  revision: 5aea0f4096e0a097231f64e0cfc2ba04d1bf9687
+  revision: 5aea0f4
   specs:
     factory_girl (2.0.0.beta1)
 

@@ -12,7 +12,7 @@ class TikkokController < ApplicationController
 
     begin
       tikkok = Tikkok.new(:title => message.subject,
-                          :body => trim_mail_data(message.body.to_s))
+                          :body => trim_mail_data(message.body.to_s.gsub(/\n/," ")))
       if tikkok.save
         puts 'saved'
         render :text => "ok"
@@ -29,6 +29,7 @@ class TikkokController < ApplicationController
 
   private
   def trim_mail_data(str)
+    puts "str: #{str}"
     s = str.index(" ", str.index(/charset=.* /))
     e = str.index("--", str.index(/Content\-Transfer\-Encoding:.* /))
     e = str.index("--", str.index(/charset=.* /)) if e.nil?

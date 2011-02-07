@@ -34,7 +34,7 @@ class TikkokController < ApplicationController
     if e.nil?
       e = str.index("--", str.index(/charset=.* /))
     end
-    if (s.nil? || e.nil?)
+    if s.nil? || e.nil?
       str
     else
       str[s..e]

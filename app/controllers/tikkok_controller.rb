@@ -48,4 +48,9 @@ class TikkokController < ApplicationController
       render :text => "some error has occurred"
     end
   end
+
+  def truncate
+    Tikkok.delete(:all)
+    redirect_to :index
+  end
 end

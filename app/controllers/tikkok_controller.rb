@@ -9,12 +9,12 @@ class TikkokController < ApplicationController
   def create
     message = Mail.new(params[:message])
 
-    #debug
+    body = ""
     message.body.to_s.split("\n").each {|m|
       if m.index("Content-Type") == nil
         if m.index("Content-Transfer-Encoding") == nil
-          if m.index(/\-\-[0-9a-z]*\-\-/) == nil
-            puts "#{m} ==> #{m.encoding}"
+          if m.index(/\-\-[0-9a-z]*/) == nil
+            body += m
           end
         end
       end
@@ -22,7 +22,7 @@ class TikkokController < ApplicationController
 
     begin
       tikkok = Tikkok.new(:title => message.subject,
-                          :body => message.body.to_s)
+                          :body => body)
       if tikkok.save
         puts 'saved'
         render :text => "ok"

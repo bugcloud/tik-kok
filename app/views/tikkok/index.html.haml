@@ -2,8 +2,8 @@
 %p Find me in app/views/tikkok/index.html.haml
 = link_to "Delete All", truncate_path
 
-= if @tikkoks.size > 0
-  = @tikkoks.each do |t|
+- if @tikkoks.size > 0
+  - @tikkoks.each do |t|
     %h1 title
     %p #{t.title}
     %h1 body

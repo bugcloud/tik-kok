@@ -9,6 +9,11 @@ class TikkokController < ApplicationController
   def create
     message = Mail.new(params[:message])
 
+    #debug
+    message.body.to_s.split("\n").each {|m|
+      puts "#{m} ==> #{m.encoding}"
+    }
+
     begin
       tikkok = Tikkok.new(:title => message.subject,
                           :body => message.body.to_s)

@@ -3,7 +3,7 @@ class TikkokController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @tikkoks = Tikkok.findForDayo
+    @tikkoks = Tikkok.findForDay
 
     #debug
     @tikkoks.each {|t|

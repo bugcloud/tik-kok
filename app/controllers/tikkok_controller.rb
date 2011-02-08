@@ -23,6 +23,9 @@ class TikkokController < ApplicationController
       body = body.encode("UTF-8")
     end
 
+    #debug
+    puts body
+
     begin
       tikkok = Tikkok.new(:title => message.subject,
                           :body => body)

@@ -11,7 +11,13 @@ class TikkokController < ApplicationController
 
     #debug
     message.body.to_s.split("\n").each {|m|
-      puts "#{m} ==> #{m.encoding}"
+      if m.index("Content-Type") == nil
+        if m.index("Content-Transfer-Encoding") == nil
+          if m.index(/\-\-[0-9a-z]*\-\-/) == nil
+            puts "#{m} ==> #{m.encoding}"
+          end
+        end
+      end
     }
 
     begin

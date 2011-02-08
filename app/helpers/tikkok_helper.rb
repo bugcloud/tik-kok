@@ -11,4 +11,8 @@ module TikkokHelper
       str[s..e]
     end
   end
+
+  def mailencToUtf8(str)
+    str.encode("utf-8", "iso-2022-jp")
+  end
 end

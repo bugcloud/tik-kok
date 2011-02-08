@@ -8,5 +8,4 @@
     %p #{t.title}
     %h1 body
     %p
-      =h t.body
-      %p #{t.body.encode("iso-2022-jp", "utf-8")}
+      =h mailencToUtf8(t.body)

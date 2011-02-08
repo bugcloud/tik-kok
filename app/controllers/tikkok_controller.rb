@@ -32,7 +32,8 @@ class TikkokController < ApplicationController
     begin
       tikkok = Tikkok.new(:title => message.subject,
                           #:from => message.from,
-                          :body => body)
+                          :body => body,
+                          :created_at => Time.now.strftime("%Y-%m-%d %H:%M"))
       if tikkok.save
         render :text => "ok"
       else

@@ -1,11 +1,13 @@
-%h1 Tikkok#index
-%p Find me in app/views/tikkok/index.html.haml
-= link_to "Delete All", truncate_path
-
-- if @tikkoks.size > 0
-  - @tikkoks.each do |t|
-    %h1 title
-    %p #{t.title}
-    %h1 body
-    %p
-      =h mailencToUtf8(t.body)
+%div{:id => "main", "data-role" => "content"}
+  %article{"data-role" => "content"}
+    - if @tikkoks.size > 0
+      - @tikkoks.each do |t|
+        %div{"data-role" => "collapsible", "data-collapsed" => "true"}
+          %h1 #{t.title}
+          %h2
+            =h mailencToUtf8(t.body)
+      = link_to "Delete All", truncate_path
+    - else
+      %div{"data-role" => "collapsible", "data-collapsed" => "true", "data-theme" => "b"}
+        %h1 No one get any accident.
+        %h2 Laugh :D

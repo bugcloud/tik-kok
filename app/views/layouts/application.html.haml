@@ -1,13 +1,19 @@
 !!!
 %html
   %head
-    %title Testapp
+    %title Tik Kok!!!
     = stylesheet_link_tag :all
-    = javascript_include_tag :defaults
+    = stylesheet_link_tag "http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.css"
+    = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"
+    = javascript_include_tag "http://code.jquery.com/mobile/1.0a3/jquery.mobile-1.0a3.min.js"
     = csrf_meta_tag
   %body
-    %ul.hmenu
-      = render :partial => 'menu/menu_items'
-    %p{:style => "color: green"}= notice
-    %p{:style => "color: red"}= alert
-    = yield 
+    %div{:id => "title", "data-role" => "page"}
+      = render :partial => 'layouts/header'
+      = yield 
+      %div{:id => "footer", "data-role" => "footer"}
+        .footer-text
+          Powered by 
+          = link_to "jQuery mobile", "http://jquerymobile.com/"
+        .footer-text
+          = link_to "bugcloud", "http://bugcloud.com/"

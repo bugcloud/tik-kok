@@ -51,6 +51,6 @@ class TikkokController < ApplicationController
 
   def truncate
     Tikkok.delete(:all)
-    redirect_to :index
+    redirect_to :action => :index
   end
 end

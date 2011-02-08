@@ -50,7 +50,7 @@ class TikkokController < ApplicationController
   end
 
   def truncate
-    Tikkok.delete(:all)
+    Tikkok.delete_all
     redirect_to '/'
   end
 end

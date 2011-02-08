@@ -1,7 +1,6 @@
 class Tikkok < ActiveRecord::Base
 
-  scope :findForDay, Proc.new{|day|
-    day = Time.now unless day.present?
+  scope :findForDay, lambda{|day|
     y,m,d = day.year,day.month,day.day
     where('created_at >= ?',Time.new(y,m,d)).
       where('created_at < ?',Time.new(y,m,d+1))

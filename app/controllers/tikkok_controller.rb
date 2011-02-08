@@ -3,13 +3,7 @@ class TikkokController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @tikkoks = Tikkok.findForDay
-
-    #debug
-    @tikkoks.each {|t|
-      puts "#index ===> #{t.body}"
-    }
-
+    @tikkoks = Tikkok.findForDay(Time.now)
   end
 
   def create
@@ -29,22 +23,16 @@ class TikkokController < ApplicationController
       body = body.encode("UTF-8")
     end
 
-    #debug
-    puts body
-
     begin
       tikkok = Tikkok.new(:title => message.subject,
+                          #:from => message.from,
                           :body => body)
       if tikkok.save
-        puts 'saved'
         render :text => "ok"
       else
-        puts 'fail to save'
         render :text => "fail to save"
       end
     rescue => e
-      puts "some error has occurred"
-      puts e
       render :text => "some error has occurred"
     end
   end

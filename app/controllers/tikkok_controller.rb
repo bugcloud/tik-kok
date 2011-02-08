@@ -4,6 +4,9 @@ class TikkokController < ApplicationController
 
   def index
     @tikkoks = Tikkok.findForDay(Time.now)
+    if params[:type] == "json"
+      render :text => @tikkoks.to_json
+    end
   end
 
   def create

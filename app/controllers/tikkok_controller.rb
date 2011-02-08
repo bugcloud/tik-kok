@@ -5,6 +5,9 @@ class TikkokController < ApplicationController
   def index
     @tikkoks = Tikkok.findForDay(Time.now)
     if params[:type] == "json"
+      @tikkoks.each {|t|
+        t.body = t.body.encode("utf-8", "iso-2022-jp")
+      }
       render :text => @tikkoks.to_json
     end
   end

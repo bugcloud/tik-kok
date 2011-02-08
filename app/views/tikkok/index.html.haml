@@ -1,11 +1,14 @@
 %div{:id => "main", "data-role" => "content"}
   %article{"data-role" => "content"}
+    %p
+      = nowDateTime
     - if @tikkoks.size > 0
       - @tikkoks.each do |t|
         %div{"data-role" => "collapsible", "data-collapsed" => "true"}
           %h1 #{t.title}
           %h2
             =h mailencToUtf8(t.body)
+          %p #{t.created_at}
       = link_to "Delete All", truncate_path
     - else
       %div{"data-role" => "collapsible", "data-collapsed" => "true", "data-theme" => "b"}

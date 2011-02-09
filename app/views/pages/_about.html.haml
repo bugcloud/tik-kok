@@ -10,6 +10,8 @@
       %li そもそもメールとか時代遅れなもの受信したくないダルい
     %p とか
     %p こんな悩みをスッキリ解消してくれるのはTik Kokかみのもんたぐらいです
+    %br/
+    %br/
     %h2 利用は簡単
     %p 遅れる人はいつものメール宛先にTik Kokのメールを追加するだけ
     %p
@@ -30,11 +32,21 @@
         &nbsp;&nbsp;30分ぐらい遅れます。
       %br/
       %p みたいな感じだと確認する人が見やすいです
+    %br/
+    %br/
+    %h2 Pay Attention
+    %p セキュリティ的にザルなので少しずつ対応していきます
+    %p 受信したメールのencodingは可能な限り対応していますが、化けてたら教えてください
+    %p とっても長いメールを受信した時とか、保存に失敗してしまったメールを平気で無視してしまうのでそのうち対応します
+    %p
+      その他、バグとかあったら
+      = link_to "@bugcloud","http://twitter.com/bugcloud",{:target => "_blank"}
+      まで
   %footer{"data-role" => "footer"}
     .footer-text
       Powered by 
-      = link_to "jQuery mobile", "http://jquerymobile.com/"
+      = link_to "jQuery mobile", "http://jquerymobile.com/",{:target => "_blank"}
       , 
-      = link_to "cloudmailin", "http://cloudmailin.com/"
+      = link_to "cloudmailin", "http://cloudmailin.com/",{:target => "_blank"}
       , and 
-      = link_to "Heroku", "http://heroku.com"
+      = link_to "Heroku", "http://heroku.com",{:target => "_blank"}

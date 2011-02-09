@@ -7,7 +7,7 @@
         %div{"data-role" => "collapsible", "data-collapsed" => "true"}
           %h1 #{t.title}
           %h2
-            =h mailencToUtf8(t.body)
+            =h mailencToUtf8(t.body, t.encoding)
           %p #{t.created_at.strftime("%Y-%m-%d %H:%M")}
       = link_to "Delete All", truncate_path
     - else

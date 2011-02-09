@@ -24,6 +24,7 @@ describe Tikkok do
     @neco.title.should == "neco"
     @neco.body.should == "traffic is heavy"
     @neco.from.should == "neco@test.com"
+    @neco.encoding.should == "utf-8"
     @neco.created_at.should == Time.new(2011,02,04,9,00,00)
   end
 

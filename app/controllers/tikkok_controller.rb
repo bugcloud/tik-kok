@@ -16,8 +16,12 @@ class TikkokController < ApplicationController
     message = Mail.new(params[:message])
 
     body = ""
+    encoding = ""
     message.body.to_s.split("\n").each {|m|
 
+      if m =~ /charset=.*/
+        encoding = $&.gsub("charset=","")
+      end
       #debug
       puts m
 
@@ -31,12 +35,14 @@ class TikkokController < ApplicationController
     }
     unless body.encoding.to_s == "UTF-8"
       body = body.encode("UTF-8")
+      encoding = encoding.encode("UTF-8")
     end
 
     begin
       tikkok = Tikkok.new(:title => message.subject,
                           #:from => message.from,
                           :body => body,
+                          :encoding => encoding,
                           :created_at => Time.now.strftime("%Y-%m-%d %H:%M"))
       if tikkok.save
         render :text => "ok"

@@ -9,7 +9,7 @@
           %h2
             =h mailencToUtf8(t.body, t.encoding)
           %p #{t.created_at.strftime("%Y-%m-%d %H:%M")}
-      = link_to "Delete All", truncate_path
+      = link_to "Delete All", truncate_path, :confirm => "Are you sure? All stored data will be deleted."
     - else
       %div{"data-role" => "collapsible", "data-collapsed" => "true", "data-theme" => "b"}
         %h1 No one get any accident.

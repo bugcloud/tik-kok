@@ -1,0 +1,40 @@
+%section{:id =>"about", "data-role"=>"page"}
+  %header{"data-role" => "header"}
+    %h1 About Tik Kok!!!
+  %article{"data-role" => "content"}
+    %h1 遅刻しますメールを一覧で確認できるサービスです
+    %h2 電車止まってる日の朝ってダルいですよね
+    %ul
+      %li どっかの電車が止まるとあっちこっちから「遅れます」っていうメールが来て探すのめんどくてダルい
+      %li 低スペックwindowsマシンは朝一かならず激重になるからメーラーとか起動するのダルい
+      %li そもそもメールとか時代遅れなもの受信したくないダルい
+    %p とか
+    %p こんな悩みをスッキリ解消してくれるのはTik Kokかみのもんたぐらいです
+    %h2 利用は簡単
+    %p 遅れる人はいつものメール宛先にTik Kokのメールを追加するだけ
+    %p
+      確認する人は
+      = link_to "Tik Kok", "http://tik-kok.heroku.com"
+      にアクセスするだけです
+    %div{"data-role" => "collapsible", "data-collapsed" => "true", "data-theme" => "a"}
+      %h1 メールサンプル
+      %p
+        %strong 件名：
+        %br/
+        &nbsp;&nbsp;わたしだ
+      %p
+        %strong 本文：
+        %br/
+        &nbsp;&nbsp;おなかが痛くなりました。
+        %br/
+        &nbsp;&nbsp;30分ぐらい遅れます。
+      %br/
+      %p みたいな感じだと確認する人が見やすいです
+  %footer{"data-role" => "footer"}
+    .footer-text
+      Powered by 
+      = link_to "jQuery mobile", "http://jquerymobile.com/"
+      , 
+      = link_to "cloudmailin", "http://cloudmailin.com/"
+      , and 
+      = link_to "Heroku", "http://heroku.com"

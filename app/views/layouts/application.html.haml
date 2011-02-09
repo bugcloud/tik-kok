@@ -11,9 +11,5 @@
     %div{:id => "title", "data-role" => "page"}
       = render :partial => 'layouts/header'
       = yield 
-      %div{:id => "footer", "data-role" => "footer"}
-        .footer-text
-          Powered by 
-          = link_to "jQuery mobile", "http://jquerymobile.com/"
-        .footer-text
-          = link_to "bugcloud", "http://bugcloud.com/"
+      = render :partial => 'layouts/footer'
+    = render :partial => 'pages/about'

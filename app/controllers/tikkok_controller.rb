@@ -25,6 +25,11 @@ class TikkokController < ApplicationController
       if m =~ /charset=.*/
         encoding = $&.gsub("charset=","")
       end
+      if encoding.empty?
+        if m =~ /Content-Type:text\/|plain;charset=.*/
+          encoding = $&.gsub("Content-Type:text/plain;charset=","")
+        end
+      end
 
       unless m.index("text/plain") == nil
         has_plain_text = true

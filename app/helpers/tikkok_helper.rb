@@ -3,7 +3,7 @@ module TikkokHelper
     if encoding.empty?
       return str
     end
-    if encoding.index(/UTF\-8|/i) == nil
+    if encoding.index(/UTF\-8/i) == nil
       str.encode("utf-8", encoding)
     else
       str

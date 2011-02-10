@@ -1,7 +1,7 @@
-%section{:id =>"about", "data-role"=>"page"}
+%section{:id =>"confirm_dialog", "data-role"=>"page"}
   %header{"data-role" => "header"}
     %h1 Attention
-  %div{"data-role" => "content", :id => "confirm_dialog"}
+  %div{"data-role" => "content"}
     %h1 Are you sure?
     %p All stored data will be deleted.
     = link_to "Delete", truncate_path, "rel" => "external", "data-theme" => "b"

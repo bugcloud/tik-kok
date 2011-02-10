@@ -38,7 +38,7 @@ class TikkokController < ApplicationController
       if m.index("Content-Type") == nil
         if m.index("Content-Transfer-Encoding") == nil
           if m.index(/\-\-[0-9a-z]*/) == nil
-            body += m unless has_plain_text && has_html_text
+            body += m+" " unless has_plain_text && has_html_text
           end
         end
       end

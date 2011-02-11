@@ -6,18 +6,22 @@ describe Tikkok do
     @uma = Factory.build(:uma)
     @neco = Factory.build(:neco)
     @gori = Factory.build(:gori)
+    @gorira = Factory.build(:gorira)
     @uma.save!
     @neco.save!
-    @gori.save
+    @gori.save!
+    @gorira.save!
   end
 
   after(:each) do
     @uma.delete
     @neco.delete
     @gori.delete
+    @gorira.delete
     @uma = nil
     @neco = nil
     @gori = nil
+    @gorira = nil
   end
 
   it "モデルのメンバにアクセスできる" do
@@ -32,5 +36,11 @@ describe Tikkok do
     tikkoks = Tikkok.findForDay(Time.new(2011,02,04))
     tikkoks.size.should == 1
     tikkoks[0].title.should == "neco"
+  end
+
+  it "scope findForDayの並び順は新しい順" do
+    tikkoks = Tikkok.findForDay(Time.new(2011,02,03))
+    tikkoks.size.should == 2
+    tikkoks[0].title.should == "gorira"
   end
 end

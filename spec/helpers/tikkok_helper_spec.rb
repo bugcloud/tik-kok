@@ -11,5 +11,15 @@ require 'spec_helper'
 #   end
 # end
 describe TikkokHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "#mailencToUtf8 case encoding is empty" do
+    helper.mailencToUtf8("\x67\x6F\x72\x69\x72\x61", "").should == "gorira"
+  end
+
+  it "#mailencToUtf8 case encoding is iso-2022-jp" do
+    helper.mailencToUtf8("\x75\x73\x61\x67\x69", "ISO-2022-JP").should == "usagi"
+  end
+
+  it "#mailencToUtf8 case encoding is utf-8" do
+    helper.mailencToUtf8("neco", "UTF-8").should == "neco"
+  end
 end

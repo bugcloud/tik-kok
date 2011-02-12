@@ -69,5 +69,6 @@ class TikkokController < ApplicationController
   end
 
   def confirm
+    render :layout => false
   end
 end

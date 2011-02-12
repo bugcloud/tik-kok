@@ -37,3 +37,11 @@ Factory.define :usa, :class => Tikkok do |t|
   t.encoding "ISO-2022-JP"
   t.created_at Time.now
 end
+
+Factory.define :fox, :class => Tikkok do |t|
+  t.title "fox"
+  t.body "con con"
+  t.from "fox@test.com"
+  t.encoding "UTF-8"
+  t.created_at Time.new(2011,02,05,11,00,00)
+end

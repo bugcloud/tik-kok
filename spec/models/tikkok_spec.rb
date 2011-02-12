@@ -7,10 +7,12 @@ describe Tikkok do
     @neco = Factory.build(:neco)
     @gori = Factory.build(:gori)
     @gorira = Factory.build(:gorira)
+    @fox = Factory.build(:fox)
     @uma.save!
     @neco.save!
     @gori.save!
     @gorira.save!
+    @fox.save!
   end
 
   after(:each) do
@@ -18,10 +20,12 @@ describe Tikkok do
     @neco.delete
     @gori.delete
     @gorira.delete
+    @fox.delete
     @uma = nil
     @neco = nil
     @gori = nil
     @gorira = nil
+    @fox = nil
   end
 
   it "モデルのメンバにアクセスできる" do
@@ -42,5 +46,14 @@ describe Tikkok do
     tikkoks = Tikkok.findForDay(Time.new(2011,02,03))
     tikkoks.size.should == 2
     tikkoks[0].title.should == "gorira"
+  end
+
+  it "scope findByDateFromAndDateToが実行できる" do
+    tikkoks = Tikkok.findByDateFromAndDateTo(
+                                              Time.new(2011,02,04,12,20.00),
+                                              Time.new(2011,02,05,12,20.00)
+                                            )
+    tikkoks.size.should == 2
+    tikkoks[0].title.should == "fox"
   end
 end

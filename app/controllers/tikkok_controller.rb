@@ -4,11 +4,41 @@ class TikkokController < ApplicationController
 
   def index
     @tikkoks = Tikkok.findForDay(Time.now)
+  end
+
+  def search
+    begin
+      if params[:since] && params[:until]
+        since = params[:since].split("-")
+        to = params[:until].split("-")
+        @tikkoks = Tikkok.findByDateFromAndDateTo(Time.new(since[0],since[1],since[2]), Time.new(to[0],to[1],to[2]))
+      elsif params[:since]
+        since = params[:since].split("-")
+        @tikkoks = Tikkok.findByDateFromAndDateTo(Time.new(since[0],since[1],since[2]), Time.now)
+      else
+        @tikkoks = Tikkok.findForDay(Time.now)
+      end
+    rescue Exception
+      render :text => 'Some error has occurred.', :satus => 500
+      return
+    end
+
+    if @tikkoks.nil? || @tikkoks.size == 0
+      render :text => 'no data.'
+      return
+    end
+
     if params[:format] == "json"
       @tikkoks.each {|t|
         t.body = t.body.encode("utf-8", t.encoding)
       }
-      render :json => @tikkoks.to_json, :callback => params[:callback]
+      if params[:callback]
+        render :json => @tikkoks.to_json, :callback => params[:callback]
+      else
+        render :json => @tikkoks.to_json
+      end
+    else
+      render :text => 'Sorry, we supported only json format yet.', :satus => 500
     end
   end
 

@@ -3,6 +3,7 @@ TikKok::Application.routes.draw do
   match 'tikkok/new' => 'tikkok#create'
   match 'tikkok/delete/all' => 'tikkok#truncate', :as => :truncate
   match 'tikkok/confirm' => 'tikkok#confirm', :as => :confirm
+  match 'tikkok/api/search' => 'tikkok#search', :as => :search
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

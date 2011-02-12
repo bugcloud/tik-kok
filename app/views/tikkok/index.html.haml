@@ -9,7 +9,8 @@
           %h2
             =h mailencToUtf8(t.body, t.encoding)
           %p #{t.created_at.strftime("%Y-%m-%d %H:%M")}
-      = link_to "Delete All", confirm_path, "data-rel" => "dialog", "data-transition" => "pop"
+      #truncateLink
+        = link_to "Delete All", confirm_path, "data-rel" => "dialog", "data-transition" => "pop"
     - else
       %div{"data-role" => "collapsible", "data-collapsed" => "true", "data-theme" => "b"}
         %h1 No one get any accident.

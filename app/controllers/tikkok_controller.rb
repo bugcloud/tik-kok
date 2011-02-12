@@ -67,4 +67,7 @@ class TikkokController < ApplicationController
     Tikkok.delete_all
     redirect_to '/'
   end
+
+  def confirm
+  end
 end
